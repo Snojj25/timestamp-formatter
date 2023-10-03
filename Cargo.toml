@@ -1,0 +1,69 @@
+[package]
+name = "iso8601-timestamp"
+version = "0.2.12"
+authors = ["novacrazy <novacrazy@gmail.com>"]
+edition = "2018"
+description = "High-performance ISO8601 Timestamp formatting and parsing"
+keywords = ["date", "time", "iso8601", "formatting", "parsing"]
+readme = "README.md"
+categories = ["date-and-time", "no-std", "parser-implementations", "value-formatting"]
+license = "MIT OR Apache-2.0"
+include = ["src/**/*", "LICENSE-*", "README.md"]
+documentation = "https://docs.rs/iso8601-timestamp"
+repository = "https://github.com/Lantern-chat/iso8601-timestamp"
+
+[package.metadata.docs.rs]
+features = ["serde", "pg", "schema", "rusqlite", "rand", "quickcheck"]
+
+[features]
+std = []
+bson = []
+diesel-pg = ["diesel", "diesel/postgres_backend"]
+js = ["js-sys"]
+pg = ["postgres-types", "bytes", "std"]
+rusqlite = ["dep:rusqlite", "std"]
+rand = ["dep:rand", "time/rand"]
+quickcheck = ["dep:quickcheck", "time/quickcheck"]
+schema = ["schemars"]
+nightly = []
+verify = []                                        # Verify numeric input during parsing
+lookup = []                                        # Use lookup table during formatting
+default = ["std", "serde", "lookup"]
+
+[dependencies]
+serde = { optional = true, version = "1" }
+time = { version = "0.3", default-features = false, features = ["macros"] }
+bytes = { optional = true, version = "1.1.0" }
+generic-array = "1.0.0"
+schemars = { optional = true, version = "0.8.8" }
+rusqlite = { optional = true, version = "0.29", default-features = false }
+postgres-types = { optional = true, version = "0.2.2", features = ["with-time-0_3"] }
+diesel = { optional = true, version = "2", default-features = false, features = ["time", "with-deprecated"] }
+rand = { optional = true, version = "0.8", default-features = false }
+quickcheck = { optional = true, version = "1.0", default-features = false }
+worker = { optional = true, version = "0.0.18" }
+js-sys = { optional = true, version = "0.3" }
+ramhorns = { optional = true, version = "0.14" }
+
+[dev-dependencies]
+time = { version = "0.3", features = ["macros", "parsing", "formatting"] }
+criterion = { version = "0.5", features = ["html_reports"] }
+chrono = "0.4"
+iso8601 = "0.6"
+ciborium = "0.2"
+serde = { version = "1", features = ["derive"] }
+
+[[bench]]
+name = "timestamp"
+path = "benches/timestamp.rs"
+harness = false
+
+[profile.release]
+opt-level = 3
+lto = 'fat'
+codegen-units = 1
+
+[profile.bench]
+opt-level = 3
+lto = 'fat'
+codegen-units = 1
