@@ -9,7 +9,6 @@ readme = "README.md"
 categories = ["date-and-time", "no-std", "parser-implementations", "value-formatting"]
 license = "MIT OR Apache-2.0"
 include = ["src/**/*", "LICENSE-*", "README.md"]
-documentation = "https://docs.rs/iso8601-timestamp"
 repository = "https://github.com/Lantern-chat/iso8601-timestamp"
 
 [package.metadata.docs.rs]
