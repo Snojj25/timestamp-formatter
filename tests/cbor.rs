@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use iso8601_timestamp::Timestamp;
+use iso8601_fromatter::Timestamp;
 
 #[derive(Serialize, Deserialize)]
 struct Nested {

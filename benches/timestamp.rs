@@ -1,7 +1,7 @@
 #![allow(deprecated)]
 
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use iso8601_timestamp::{Timestamp, UtcOffset};
+use iso8601_fromatter::{Timestamp, UtcOffset};
 
 fn criterion_benchmark(c: &mut Criterion) {
     let offset = black_box(time::UtcOffset::from_hms(-4, 30, 0).unwrap());
