@@ -11,7 +11,7 @@ Example:
 ```rust
 use serde::{Serialize, Deserialize};
 use smol_str::SmolStr; // stack-allocation for small strings
-use iso8601_timestamp::Timestamp;
+use iso8601_fromatter::Timestamp;
 
 #[derive(Debug, Clone, Serialize)]
 pub struct Event {

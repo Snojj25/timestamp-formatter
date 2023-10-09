@@ -1,4 +1,4 @@
-use iso8601_timestamp::Timestamp;
+use iso8601_fromatter::Timestamp;
 
 #[test]
 fn test_bad_inputs() {
